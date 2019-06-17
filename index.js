@@ -1,19 +1,9 @@
 var map, heatmap;
 var trafficViolations = [];
 
-window.onload = function() {
+window.onload = function () {
   loadcanva();
 };
-function getTrafficViolations() {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function() {
-    if (http.readyState == 4 && http.status == 200) {
-      trafficViolations = JSON.parse(http.response).TrafficViolations;
-    }
-  };
-  http.open("GET", "trafficViolations.json", false);
-  http.send();
-}
 
 async function initMap() {
   await getTrafficViolations();
@@ -28,6 +18,16 @@ async function initMap() {
     map: map
   });
 }
+function getTrafficViolations() {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function () {
+    if (http.readyState == 4 && http.status == 200) {
+      trafficViolations = JSON.parse(http.response).TrafficViolations;
+    }
+  };
+  http.open("GET", "trafficViolations.json", false);
+  http.send();
+}
 
 function getPoints() {
   var retorno = [];
@@ -40,15 +40,23 @@ function getPoints() {
 }
 
 function loadcanva() {
-  var ctx = document.getElementById("myChart").getContext("2d");
-  var myChart = new Chart(ctx, {
-    type: "bar",
+  valorArrecadadoChart();
+  qtdinfraChart();
+  qqq();
+  tpInfraRecorrenteChart();
+  picoInfraChart();
+  pontosCarteiraChart();
+}
+function valorArrecadadoChart() {
+  var valorArrecadado = document.getElementById("valorArrecadado").getContext("2d");
+  var myChart = new Chart(valorArrecadado, {
+    type: "pie",
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: ["2015", "2016", "2017", "2018", "2019", "Orange"],
       datasets: [
         {
           label: "# of Votes",
-          data: [12, 19, 3, 5, 2, 3],
+          data: [1000, 2505, 6596, 3262, 3362, 3363],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -68,17 +76,166 @@ function loadcanva() {
           borderWidth: 1
         }
       ]
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true
-            }
-          }
-        ]
-      }
+    }
+  });
+}
+function qtdinfraChart() {
+  var qtdinfra = document.getElementById("qtdinfra").getContext("2d");
+  var myChart = new Chart(qtdinfra, {
+    type: "line",
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019", "Orange"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [1000, 2505, 6596, 3262, 3362, 3363],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)"
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
+    }
+  });
+}
+function qqq() {
+  var qqq = document.getElementById("qqq").getContext("2d");
+  var myChart = new Chart(qqq, {
+    type: "bar",
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019", "Orange"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [1000, 2505, 6596, 3262, 3362, 3363],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)"
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
+    }
+  });
+}
+function tpInfraRecorrenteChart() {
+  var tpInfraRecorrente = document.getElementById("tpInfraRecorrente").getContext("2d");
+  var myChart = new Chart(tpInfraRecorrente, {
+    type: "polarArea",
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019", "Orange"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [1000, 2505, 6596, 3262, 3362, 3363],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)"
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
+    }
+  });
+}
+function picoInfraChart() {
+  var picoInfra = document.getElementById("picoInfra").getContext("2d");
+  var myChart = new Chart(picoInfra, {
+    type: "radar",
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019", "Orange"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [1000, 2505, 6596, 3262, 3362, 3363],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)"
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
+    }
+  });
+}
+function pontosCarteiraChart() {
+  var pontosCarteira = document.getElementById("pontosCarteira").getContext("2d");
+  var myChart = new Chart(pontosCarteira, {
+    type: "pie",
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019", "Orange"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [1000, 2505, 6596, 3262, 3362, 3363],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)"
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
     }
   });
 }
