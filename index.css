@@ -2,9 +2,15 @@ html{
   font-family: sans-serif;
 }
 
-#mapa {
-  height: 10%;
-  width: 10%;
+.mapa {
+  height: 40vh;
+  width: 90vw;
+}
+#map{
+  height: 40vh;
+  padding-bottom: 0;
+  margin-bottom: 5vh;
+  
 }
 
 h2 {
