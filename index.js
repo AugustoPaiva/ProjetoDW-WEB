@@ -26,7 +26,7 @@ function getTrafficViolations() {
     // if (!xhr) {
     //     throw new Error('CORS not supported');
     // }
-    axios.get('https://localhost:3001/api/infracoes', {})
+    axios.get('https://projeto-dw.herokuapp.com/api/infracoes', {})
         .then(response => {
             console.log(response)
         })
