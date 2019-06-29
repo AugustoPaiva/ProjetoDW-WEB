@@ -20,41 +20,28 @@ async function initMap() {
     });
 }
 
-function getTrafficViolations() {
+async function getTrafficViolations() {
+    try {
+        const pontos = await axios.get('https://projeto-dw.herokuapp.com/api/infracoes', {});
+        trafficViolations = pontos.data;
+        console.log(trafficViolations);
 
-    // console.log(xhr)
-    // if (!xhr) {
-    //     throw new Error('CORS not supported');
-    // }
-    axios.get('https://projeto-dw.herokuapp.com/api/infracoes', {})
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error => {
-            console.log(error)
-        });
-
-    // var http = new XMLHttpRequest();
-
-    // console.log('oi')
-    // http.onreadystatechange = function () {
-    //     if (http.readyState == 4 && http.status == 200) {
-    //         trafficViolations = JSON.parse(http.response);
-    //         console.log(http.response);
-    //     }
-    // };
-    // http.open("GET", "localhost:3001/api/infracoes", true);
-    // http.send();
-
+    } catch (e) {
+        console.log(e);
+    }
 
 }
 
 function getPoints() {
     var retorno = [];
     trafficViolations.forEach(trafficViolation => {
-        retorno.push(
-            new google.maps.LatLng(trafficViolation.cord[0], trafficViolation.cord[1])
-        );
+        console.log(trafficViolation)
+        for (const x of Array(trafficViolation.ocorrencias).keys()) {
+            retorno.push(
+                new google.maps.LatLng(trafficViolation.latitude, trafficViolation.longitude)
+            );
+        }
+
     });
     return retorno;
 }
