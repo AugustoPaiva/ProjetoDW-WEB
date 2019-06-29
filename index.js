@@ -10,8 +10,8 @@ window.onload = function () {
 async function initMap() {
     await getTrafficViolations();
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: { lat: 37.775, lng: -122.434 },
+        zoom: 11,
+        center: { lat: -8.063172, lng: -34.871050 },
         mapTypeId: 'satellite'
     });
     heatmap = new google.maps.visualization.HeatmapLayer({
