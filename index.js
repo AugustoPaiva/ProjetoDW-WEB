@@ -43,7 +43,7 @@ async function getTrafficViolations() {
         const bairros = localStorage.getItem('bairros').split(',');
         const ano = localStorage.getItem('ano');
         //const pontos = await axios.post('https://projeto-dw.herokuapp.com/api/infracoes', { 'ano': window.ano, 'bairro': window.bairros });
-        const pontos = await axios.post('http://localhost:3001/api/infracoes', { 'ano': ano, 'bairro': bairros });
+        const pontos = await axios.post('https://projeto-dw.herokuapp.com/api/infracoes', { 'ano': ano, 'bairro': bairros });
         //const pontos = await axios.post('https://projeto-dw.herokuapp.com/api/infracoes', { 'ano': window.ano, 'bairro': window.bairros });
 
         //const pontos = await axios.get('https://projeto-dw.herokuapp.com/api/infracoes', {});
@@ -84,7 +84,7 @@ async function valorArrecadadoChart() {
     let data = [];
     const bairros = localStorage.getItem('bairros').split(',');
     const ano = localStorage.getItem('ano');
-    const valor = await axios.post('http://localhost:3001/api/valorMulta', { 'ano': ano, 'bairro': bairros });
+    const valor = await axios.post('https://projeto-dw.herokuapp.com/api/valorMulta', { 'ano': ano, 'bairro': bairros });
 
     await valor.data[0].forEach(valor => { labels.push(valor.nome); data.push(parseInt(valor.total)) });
     var valorArrecadado = document.getElementById("valorArrecadado").getContext("2d");
@@ -122,7 +122,7 @@ async function qtdinfraChart() {
     let data = [];
     const bairros = localStorage.getItem('bairros').split(',');
     const ano = localStorage.getItem('ano');
-    const qtd = await axios.post('http://localhost:3001/api/quantidadeInfracoes', { 'ano': ano, 'bairro': bairros });
+    const qtd = await axios.post('https://projeto-dw.herokuapp.com/api/quantidadeInfracoes', { 'ano': ano, 'bairro': bairros });
 
     await qtd.data.forEach(valor => { labels.push(valor.nome); data.push(parseInt(valor.quantidade)) });
 
@@ -160,7 +160,7 @@ async function infraSemestre() {
     let data = [];
     const bairros = localStorage.getItem('bairros').split(',');
     const ano = localStorage.getItem('ano');
-    const retorno = await axios.post('http://localhost:3001/api/infraSemestre', { 'ano': ano, 'bairro': bairros });
+    const retorno = await axios.post('https://projeto-dw.herokuapp.com/api/infraSemestre', { 'ano': ano, 'bairro': bairros });
 
     console.log(retorno.data);
     await retorno.data.forEach(valor => { labels.push(`${valor.ano_texto}/${valor.semestre_texto[valor.semestre_texto.length - 1]}`); data.push(parseInt(valor.quantidade)) });
@@ -201,7 +201,7 @@ async function tpInfraRecorrenteChart() {
     let data = [];
     const bairros = localStorage.getItem('bairros').split(',');
     const ano = localStorage.getItem('ano');
-    const infracao = await axios.post('http://localhost:3001/api/topInfracao', { 'ano': ano, 'bairro': bairros });
+    const infracao = await axios.post('https://projeto-dw.herokuapp.com/api/topInfracao', { 'ano': ano, 'bairro': bairros });
     await infracao.data.forEach(valor => { labels.push((valor.infracao_id + '-' + valor.descricao)); data.push(parseInt(valor.quantidade)) });
 
     var tpInfraRecorrente = document.getElementById("tpInfraRecorrente").getContext("2d");
@@ -245,7 +245,7 @@ async function picoInfraChart() {
     let data = [];
     const bairros = localStorage.getItem('bairros').split(',');
     const ano = localStorage.getItem('ano');
-    const horapico = await axios.post('http://localhost:3001/api/horaPico', { 'ano': ano, 'bairro': bairros });
+    const horapico = await axios.post('https://projeto-dw.herokuapp.com/api/horaPico', { 'ano': ano, 'bairro': bairros });
     await horapico.data.forEach(valor => { labels.push(valor.hora + 'hr'); data.push(parseInt(valor.quantidade)) });
 
     var picoInfra = document.getElementById("picoInfra").getContext("2d");
@@ -282,7 +282,7 @@ async function pontosCarteiraChart() {
     let data = [];
     const bairros = localStorage.getItem('bairros').split(',');
     const ano = localStorage.getItem('ano');
-    const pontosAplicados = await axios.post('http://localhost:3001/api/pontosAplicados', { 'ano': ano, 'bairro': bairros });
+    const pontosAplicados = await axios.post('https://projeto-dw.herokuapp.com/api/pontosAplicados', { 'ano': ano, 'bairro': bairros });
     await pontosAplicados.data.forEach(valor => {
         labels.push(valor.nome); data.push(parseInt(valor.media))
     });
