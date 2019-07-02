@@ -3,9 +3,11 @@ var trafficViolations = [];
 window.bairros = [];
 
 window.onload = async function () {
-    await loadcanva();
+
     localStorage.setItem('bairros', []);
     localStorage.setItem('ano', '');
+    await loadcanva();
+
 };
 
 document.getElementById('add').onclick = function () {
