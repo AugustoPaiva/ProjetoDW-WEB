@@ -5,15 +5,43 @@
   <meta charset="utf-8" />
   <title>DASHBOARD DW</title>
   <link rel="stylesheet" type="text/css" href="index.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <div class="navbar navbar-nav">
-    <span class="navbar-text text-center">
-      DASHBOARD INFRAÇÕES DE TRANSITO
-    </span>
+  <div class="navbar navbar-nav row">
+    <div class="text-center">
+      <span class="navbar-text text-center">
+        DASHBOARD INFRAÇÕES DE TRANSITO
+      </span>
+    </div>
+    <div class=" text-right">
+
+      <form id="form" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-1" id="ano" type="ano" placeholder="Ano" aria-label="Search">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle mr-sm-2" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <input class="form-control mr-sm-1 dropdown-item" id="bairro" type="bairro" placeholder="Bairro">
+            <button class="btn btn-success my-2 my-sm-0 mr-sm-1" id="add" type="button">ADD</button>
+
+          </div>
+        </div>
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+
+    </div>
+    <!-- <input class="form-control mr-sm-1" id="bairro" type="bairro" placeholder="Bairro" aria-label="Search"> -->
+    <!-- <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button> -->
+  </div>
+
   </div>
 
   <div class="container">
@@ -43,8 +71,8 @@
         <canvas id="qtdinfra" width="100" height="100"></canvas>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-4 justify-content-md-center">
-        <h2>Hora de pico em infrações</h2>
-        <canvas id="qqq" width="100" height="100"></canvas>
+        <h2>Infrações semestrais</h2>
+        <canvas id="infraSemestre" width="100" height="100"></canvas>
       </div>
     </div>
 
@@ -52,8 +80,16 @@
 
 
   <script src="index.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaYR0yanUN76I4ZLSDsbe8eNJYIlGTSws&libraries=visualization&callback=initMap">
     </script>
